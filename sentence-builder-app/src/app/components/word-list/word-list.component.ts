@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class WordListComponent {
 
+  // insert random list of 5 nound
+  Nouns = ['cat', 'dog', 'bird', 'fish', 'mouse'];
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 }
