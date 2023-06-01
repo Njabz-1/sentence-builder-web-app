@@ -12,5 +12,17 @@
   <button (click)="addWordToSentence(selectedWord)">Add to Sentence</button>
 
   <h2>Sentence:</h2>
-  <p>{{ sentence }}</p>
+  <p>{{ sentence }}</p><button (click)="saveSentence()">Save Sentence</button>
+
+  <button (click)="saveSentence()">Save Sentence</button>
+  <button (click)="toggleSentences()">Toggle Sentences</button>
+
+  <div *ngIf="showSentences">
+    <h2>Saved Sentences:</h2>
+    <ul>
+      <li *ngFor="let sentence of sentences">
+        {{ sentence.sentence }}
+      </li>
+    </ul>
+  </div>
 </main>
