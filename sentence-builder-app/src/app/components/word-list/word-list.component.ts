@@ -11,7 +11,7 @@ export class WordListComponent {
   word: string = '';
   wordTypes: string[] = [] as string[];
   selectedWordType: string = '';
-  selectedWord: Word = {} as Word;
+  selectedWord: string = '';
   sentence: string = '';
   wordsByType: Word[] = [];
   allWords: Word[] = [];
@@ -19,29 +19,30 @@ export class WordListComponent {
   constructor(private wordService: WordService) { }
 
   ngOnInit(): void {
-    this.wordService.getWords().subscribe((data) =>{
+    this.wordService.getWords().subscribe({
+      next: (data) => {
         this.allWords = data;
-
+    
         // Create a Set object to hold the unique word types.
         let wordTypeSet = new Set();
-
+    
         // Loop through the words and add each word type to the Set.
         for (let word of this.allWords) {
           wordTypeSet.add(word.word_type);
         }
-
+    
         // Convert the Set back to an array.
         this.wordTypes = Array.from(wordTypeSet) as string[];
-
+    
         if (this.wordTypes.length > 0) {
           this.selectedWordType = this.wordTypes[0];
           this.getWordsByType(this.selectedWordType);
         }
       },
-      error => {
+      error: (error) => {
         console.log('There was an error while fetching the words!', error);
       }
-    );
+    });
   }
 
   getWordsByType(type: string): void {
@@ -50,8 +51,8 @@ export class WordListComponent {
     console.log('Words of selected type:', this.wordsByType);
   }
 
-  addWordToSentence(word: Word): void {
-    this.sentence += word.word + ' ';
-    // Implement logic to add the selected word to the sentence
+  addWordToSentence(word: string): void {
+    this.sentence += word + ' ';
+    console.log('Sentence:', this.sentence);
   }
 }

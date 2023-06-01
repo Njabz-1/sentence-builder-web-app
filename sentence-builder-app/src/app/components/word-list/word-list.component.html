@@ -6,7 +6,7 @@
 
   <h2>Available Words:</h2>
   <select [(ngModel)]="selectedWord">
-    <option *ngFor="let word of wordsByType " [value]="">{{ word.word }}</option>
+    <option *ngFor="let word of wordsByType" [value]="word.word">{{ word.word }}</option>
   </select>
 
   <button (click)="addWordToSentence(selectedWord)">Add to Sentence</button>
