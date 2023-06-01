@@ -5,11 +5,11 @@
   </select>
 
   <h2>Available Words:</h2>
-  <select [(ngModel)]="wordsByType">
-    <option *ngFor="let word of wordsByType " [value]="">{{ word }}</option>
+  <select [(ngModel)]="selectedWord">
+    <option *ngFor="let word of wordsByType " [value]="">{{ word.word }}</option>
   </select>
 
-  <button (click)="addWordToSentence(word)">Add to Sentence</button>
+  <button (click)="addWordToSentence(selectedWord)">Add to Sentence</button>
 
   <h2>Sentence:</h2>
   <p>{{ sentence }}</p>
