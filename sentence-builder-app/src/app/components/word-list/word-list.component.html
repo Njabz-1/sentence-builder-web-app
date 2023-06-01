@@ -4,9 +4,9 @@
     <option *ngFor="let type of wordTypes" [value]="type">{{ type }}</option>
   </select>
 
-  <h2>Nouns:</h2>
-  <select [(ngModel)]="word">
-    <option *ngFor="let noun of Nouns" [value]="noun">{{ noun }}</option>
+  <h2>Available Words:</h2>
+  <select [(ngModel)]="wordsByType">
+    <option *ngFor="let word of wordsByType " [value]="">{{ word }}</option>
   </select>
 
   <button (click)="addWordToSentence(word)">Add to Sentence</button>
