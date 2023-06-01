@@ -1,4 +1,4 @@
-<div>
+<main>
   <h2>Select a Word Type:</h2>
   <select [(ngModel)]="selectedWordType" (change)="getWordsByType(selectedWordType)">
     <option *ngFor="let type of wordTypes" [value]="type">{{ type }}</option>
@@ -13,4 +13,4 @@
 
   <h2>Sentence:</h2>
   <p>{{ sentence }}</p>
-</div>
+</main>
