@@ -1,13 +1,16 @@
 <div>
-    <!-- <h2>Select a Word Type:</h2>
-    <select [(ngModel)]="selectedWordType" (change)="getWordsByType(selectedWordType)">
-      <option *ngFor="let type of wordTypes" [value]="type">{{ type }}</option>
-    </select> -->
-  
-    <h2>Nouns:</h2>
-    <select>
-      <option *ngFor="let noun of Nouns" [value]="noun">{{ noun }}</option>
-    </select>
-    
-    <!-- <button (click)="addWordToSentence()">Add to Sentence</button> -->
-  </div>
+  <h2>Select a Word Type:</h2>
+  <select [(ngModel)]="selectedWordType" (change)="getWordsByType(selectedWordType)">
+    <option *ngFor="let type of wordTypes" [value]="type">{{ type }}</option>
+  </select>
+
+  <h2>Nouns:</h2>
+  <select [(ngModel)]="word">
+    <option *ngFor="let noun of Nouns" [value]="noun">{{ noun }}</option>
+  </select>
+
+  <button (click)="addWordToSentence(word)">Add to Sentence</button>
+
+  <h2>Sentence:</h2>
+  <p>{{ sentence }}</p>
+</div>
