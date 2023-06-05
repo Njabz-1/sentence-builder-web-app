@@ -1,0 +1,11 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+  }

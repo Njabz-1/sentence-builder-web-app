@@ -1,28 +1,40 @@
-<main>
-  <h2>Select a Word Type:</h2>
-  <select [(ngModel)]="selectedWordType" (change)="getWordsByType(selectedWordType)">
-    <option *ngFor="let type of wordTypes" [value]="type">{{ type }}</option>
-  </select>
+<main class="main-content-wrapper">
+  <section class="container">
+    <div class="row">
+      <div class="col-6">
+        <h2>Select a Word Type:</h2>
+        <select class="form-select w-50" [(ngModel)]="selectedWordType" (change)="getWordsByType(selectedWordType)">
+          <option *ngFor="let type of wordTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="col-6">
+        <h2>Select a Word:</h2>
+        <select class="form-select w-50" [(ngModel)]="selectedWord">
+          <option *ngFor="let word of wordsByType" [value]="word.word">{{ word.word }}</option>
+        </select>
+        <button class="d-flex mt-3 btn btn-info" (click)="addWordToSentence(selectedWord)">Add Word to Sentence</button>
+      </div>
 
-  <h2>Available Words:</h2>
-  <select [(ngModel)]="selectedWord">
-    <option *ngFor="let word of wordsByType" [value]="word.word">{{ word.word }}</option>
-  </select>
+    </div>
+  </section>
+  <section class="container mt-5">
+    <div class="row">
+      <div class="col-6">
+        <h2>Sentence:</h2>
+        <p>{{ sentence }}</p><button class="btn btn-secondary " (click)="saveSentence()">Save Sentence</button>
+      </div>
+      <div class="col-5">
+        <button class="btn d-flex btn btn-primary mt-3" (click)="toggleSentences()">Display Saved Sentences</button>
 
-  <button (click)="addWordToSentence(selectedWord)">Add to Sentence</button>
-
-  <h2>Sentence:</h2>
-  <p>{{ sentence }}</p><button (click)="saveSentence()">Save Sentence</button>
-
-  <button (click)="saveSentence()">Save Sentence</button>
-  <button (click)="toggleSentences()">Toggle Sentences</button>
-
-  <div *ngIf="showSentences">
-    <h2>Saved Sentences:</h2>
-    <ul>
-      <li *ngFor="let sentence of sentences">
-        {{ sentence.sentence }}
-      </li>
-    </ul>
-  </div>
+        <div *ngIf="showSentences">
+          <h2>Saved Sentences:</h2>
+          <ul>
+            <li *ngFor="let sentence of sentences">
+              {{ sentence.sentence }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
